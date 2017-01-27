@@ -4,11 +4,11 @@ package com.gaidelfanclub.codenames.utils;
 public class KeywordUtils {
 
     public static String getParticipantKeyword(String leaderKeyword) {
-        return leaderKeyword;
+        return KeywordsStore.getInstance().getParticipantKeyword(leaderKeyword);
     }
 
     public static int convertParticipantKeywordToSeed(String participantKeyword) {
-        return participantKeyword.hashCode();
+        return KeywordsStore.getInstance().getSeedByPublicKey(participantKeyword);
     }
 
     public static int convertLeaderKeywordToSeed(String leaderKeyword) {
