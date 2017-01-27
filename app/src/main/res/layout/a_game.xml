@@ -5,16 +5,9 @@
     android:gravity="center"
     android:orientation="vertical">
 
-    <Button
-        android:id="@+id/leader"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/leader" />
-
-    <Button
-        android:id="@+id/participant"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/participant" />
+        android:layout_height="match_parent" />
 
 </LinearLayout>

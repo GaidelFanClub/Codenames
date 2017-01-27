@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">ACM Codenames</string>
+    <string name="leader">Ведущий</string>
+    <string name="participant">Участник</string>
+    <string name="start_dialog.leader.title">Введите любое слово</string>
+    <string name="start_dialog.participant.title">Введите ключевое слово, которое вам сказал лидер</string>
+    <string name="start.dialog.ok">Начать</string>
+    <string name="start.dialog.cancel">Отмена</string>
+    <string name="start.dialog.empty_keyword_error">Ключевое слово не может быть пустым</string>
 </resources>
