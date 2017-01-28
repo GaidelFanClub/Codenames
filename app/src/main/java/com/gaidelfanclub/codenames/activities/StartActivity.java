@@ -16,6 +16,7 @@ import com.gaidelfanclub.codenames.utils.KeywordsStore;
 
 public class StartActivity extends BaseActivity {
 
+    public static boolean flag = false;
     private interface OnKeywordEnteredListener {
         void onKeywordEntered(String keyword);
     }
@@ -33,7 +34,8 @@ public class StartActivity extends BaseActivity {
                         if (TextUtils.isEmpty(keyword)) {
                             Toast.makeText(StartActivity.this, R.string.start_dialog_empty_keyword_error, Toast.LENGTH_SHORT).show();
                         } else {
-                            startGameAsLeader(keyword);
+                            flag = true;
+                            startGame(keyword);
                         }
                     }
                 });
@@ -49,7 +51,7 @@ public class StartActivity extends BaseActivity {
                         if (TextUtils.isEmpty(keyword)) {
                             Toast.makeText(StartActivity.this, R.string.start_dialog_empty_keyword_error, Toast.LENGTH_SHORT).show();
                         } else {
-                            startGameAsParticipant(keyword);
+                            startGame(keyword);
                         }
                     }
                 });
@@ -57,7 +59,7 @@ public class StartActivity extends BaseActivity {
         });
     }
 
-    private void startGameAsLeader(String keyword) {
+    private void startGame(String keyword) {
         Intent intent = new Intent(this, GameActivity.class);
         startActivity(intent);
     }

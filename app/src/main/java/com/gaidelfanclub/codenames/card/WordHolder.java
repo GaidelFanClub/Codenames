@@ -1,11 +1,13 @@
 package com.gaidelfanclub.codenames.card;
 
 import android.animation.ObjectAnimator;
+import android.support.annotation.ColorRes;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
 import com.gaidelfanclub.codenames.R;
+import com.gaidelfanclub.codenames.activities.StartActivity;
 
 public class WordHolder extends RecyclerView.ViewHolder {
 
@@ -16,16 +18,18 @@ public class WordHolder extends RecyclerView.ViewHolder {
 
     private Word data;
 
-    public WordHolder(View itemView) {
+    public WordHolder(final View itemView) {
         super(itemView);
+
         word = (TextView) itemView.findViewById(R.id.word);
         innerContainer = itemView.findViewById(R.id.inner_container);
         view = itemView;
-        shroud = itemView.findViewById(R.id.shroud);
+
+
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                shroud.setVisibility(View.GONE);
+                innerContainer.setBackgroundColor(data.getType().getColor());
                 data.setOpened(true);
             }
         });
@@ -34,11 +38,12 @@ public class WordHolder extends RecyclerView.ViewHolder {
     public void bind(Word data) {
         this.data = data;
         word.setText(data.getWord());
-        innerContainer.setBackgroundColor(data.getType().getColor());
         if (data.isOpened()) {
-            shroud.setVisibility(View.GONE);
-        } else {
-            shroud.setVisibility(View.VISIBLE);
+            innerContainer.setBackgroundColor(data.getType().getColor());
+        }else{
+            if(StartActivity.flag)
+            innerContainer.setBackgroundColor(data.getType().getColor());
+            innerContainer.getBackground().setAlpha(50);
         }
     }
 }
