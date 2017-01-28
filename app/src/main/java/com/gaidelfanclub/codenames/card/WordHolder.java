@@ -14,10 +14,12 @@ public class WordHolder extends RecyclerView.ViewHolder {
 
     private Word data;
     private boolean isLeader;
+    private boolean flag;
 
     public WordHolder(final View itemView, final boolean isLeader) {
         super(itemView);
         this.isLeader = isLeader;
+        flag = true;
 
         word = (TextView) itemView.findViewById(R.id.word);
         innerContainer = itemView.findViewById(R.id.inner_container);
@@ -39,7 +41,9 @@ public class WordHolder extends RecyclerView.ViewHolder {
         if (isLeader) {
             innerContainer.setBackgroundColor(data.getType().getColor());
             word.setTextColor(data.getType().getColor2());
-            innerContainer.setAlpha(data.isOpened() ? 0.5f : 1f);
+            float c = flag ? 0.5f : 1f;
+            innerContainer.setAlpha(c);
+            flag = !flag;
 
         } else {
             if (data.isOpened()) {

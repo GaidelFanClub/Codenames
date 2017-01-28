@@ -17,4 +17,10 @@
         android:layout_height="wrap_content"
         android:text="@string/participant" />
 
+    <Button
+        android:id="@+id/rules"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/rules" />
+
 </LinearLayout>
