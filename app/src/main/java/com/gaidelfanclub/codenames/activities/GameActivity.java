@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.TextView;
 
 import com.gaidelfanclub.codenames.BaseActivity;
 import com.gaidelfanclub.codenames.R;
@@ -14,6 +15,7 @@ import com.gaidelfanclub.codenames.card.WordType;
 import com.gaidelfanclub.codenames.card.WordsAdapter;
 import com.gaidelfanclub.codenames.utils.GenUtils;
 import com.gaidelfanclub.codenames.utils.KeywordUtils;
+import com.gaidelfanclub.codenames.utils.KeywordsStore;
 
 import java.util.Random;
 
@@ -32,6 +34,7 @@ public class GameActivity extends BaseActivity {
     private RecyclerView recyclerView;
     private String keyword;
     private boolean isLeader;
+    private TextView keyView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +44,7 @@ public class GameActivity extends BaseActivity {
         keyword = getIntent().getStringExtra(EXTRA_KEYWORD);
 
         recyclerView = (RecyclerView) findViewById(R.id.recycler);
+        keyView = (TextView)findViewById(R.id.words);
         initRecycler(recyclerView);
     }
 
@@ -55,6 +59,10 @@ public class GameActivity extends BaseActivity {
         }
         WordsAdapter adapter = new WordsAdapter(isLeader);
         adapter.setWords(words);
+
+        if(isLeader){
+            keyView.setText("Слово ведущего: " + keyword + "\n Слово игроков: " + KeywordsStore.getInstance().getWord(getSeed()));
+        }
         recyclerView.setAdapter(adapter);
     }
 
@@ -64,6 +72,7 @@ public class GameActivity extends BaseActivity {
             gameKey = KeywordUtils.getParticipantKeyword(keyword);
         } else {
             gameKey = keyword;
+
         }
         return KeywordUtils.convertParticipantKeywordToSeed(gameKey);
     }

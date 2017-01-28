@@ -55,7 +55,7 @@ public class WordStore {
                 value = random.nextInt(data.size());
                 if (used.add(value)) break;
             }
-            words[i] = data.get(i);
+            words[i] = data.get(value);
         }
         return words;
     }

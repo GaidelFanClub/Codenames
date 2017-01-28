@@ -50,6 +50,8 @@ public class KeywordsStore {
         return data[index];
     }
 
+    public String getWord(int index) { return data[index]; }
+
     public int findLowerPosition(String keyword) {
         awaitInit();
         int left = 0;

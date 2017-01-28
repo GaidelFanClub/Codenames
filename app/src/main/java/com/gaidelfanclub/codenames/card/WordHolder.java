@@ -38,7 +38,9 @@ public class WordHolder extends RecyclerView.ViewHolder {
         word.setText(data.getWord());
         if (isLeader) {
             innerContainer.setBackgroundColor(data.getType().getColor());
+            word.setTextColor(data.getType().getColor2());
             innerContainer.setAlpha(data.isOpened() ? 0.5f : 1f);
+
         } else {
             if (data.isOpened()) {
                 innerContainer.setBackgroundColor(data.getType().getColor());
