@@ -1,24 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/inner_container"
     android:layout_width="match_parent"
     android:layout_height="100dp"
+    android:background="@color/word_gray"
     android:orientation="vertical"
-    android:padding="2dp">
+    android:layout_margin="2dp">
 
-    <FrameLayout
-        android:id="@+id/inner_container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#DDDDDD">
-
-        <TextView
-            android:id="@+id/word"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"/>
-
-    </FrameLayout>
-
+    <TextView
+        android:id="@+id/word"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" />
 
 
 </FrameLayout>

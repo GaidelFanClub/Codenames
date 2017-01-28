@@ -12,11 +12,9 @@ import android.widget.Toast;
 
 import com.gaidelfanclub.codenames.BaseActivity;
 import com.gaidelfanclub.codenames.R;
-import com.gaidelfanclub.codenames.utils.KeywordsStore;
 
 public class StartActivity extends BaseActivity {
 
-    public static boolean flag;
     private interface OnKeywordEnteredListener {
         void onKeywordEntered(String keyword);
     }
@@ -34,8 +32,7 @@ public class StartActivity extends BaseActivity {
                         if (TextUtils.isEmpty(keyword)) {
                             Toast.makeText(StartActivity.this, R.string.start_dialog_empty_keyword_error, Toast.LENGTH_SHORT).show();
                         } else {
-                            flag = true;
-                            startGame(keyword);
+                            startGame(keyword, true);
                         }
                     }
                 });
@@ -51,8 +48,7 @@ public class StartActivity extends BaseActivity {
                         if (TextUtils.isEmpty(keyword)) {
                             Toast.makeText(StartActivity.this, R.string.start_dialog_empty_keyword_error, Toast.LENGTH_SHORT).show();
                         } else {
-                            flag = false;
-                            startGame(keyword);
+                            startGame(keyword, false);
                         }
                     }
                 });
@@ -60,9 +56,8 @@ public class StartActivity extends BaseActivity {
         });
     }
 
-    private void startGame(String keyword) {
-        Intent intent = new Intent(this, GameActivity.class);
-        startActivity(intent);
+    private void startGame(String keyword, boolean asLeader) {
+        startActivity(GameActivity.createIntent(this, keyword, asLeader));
     }
 
     private void startGameAsParticipant(String keyword) {

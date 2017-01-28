@@ -11,9 +11,10 @@ import com.gaidelfanclub.codenames.R;
 public class WordsAdapter extends RecyclerView.Adapter<WordHolder> {
 
     private Word[] words;
+    private boolean isLeader;
 
-    public WordsAdapter(Word[] words) {
-        this.words = words;
+    public WordsAdapter(boolean isLeader) {
+        this.isLeader = isLeader;
     }
 
     public void setWords(Word[] words) {
@@ -24,7 +25,7 @@ public class WordsAdapter extends RecyclerView.Adapter<WordHolder> {
     @Override
     public WordHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.i_word, parent, false);
-        return new WordHolder(view);
+        return new WordHolder(view, isLeader);
     }
 
     @Override
