@@ -16,7 +16,7 @@ import com.gaidelfanclub.codenames.utils.KeywordsStore;
 
 public class StartActivity extends BaseActivity {
 
-    public static boolean flag = false;
+    public static boolean flag;
     private interface OnKeywordEnteredListener {
         void onKeywordEntered(String keyword);
     }
@@ -51,6 +51,7 @@ public class StartActivity extends BaseActivity {
                         if (TextUtils.isEmpty(keyword)) {
                             Toast.makeText(StartActivity.this, R.string.start_dialog_empty_keyword_error, Toast.LENGTH_SHORT).show();
                         } else {
+                            flag = false;
                             startGame(keyword);
                         }
                     }

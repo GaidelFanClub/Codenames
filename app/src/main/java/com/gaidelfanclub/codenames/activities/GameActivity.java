@@ -41,10 +41,6 @@ public class GameActivity extends BaseActivity {
         recyclerView.setAdapter(adapter);
     }
 
-    @Override
-    protected  void  onPause(){
-        super.onPause();
-        StartActivity.flag = false;
-    }
+
 
 }

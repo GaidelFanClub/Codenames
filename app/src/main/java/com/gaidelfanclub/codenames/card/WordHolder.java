@@ -31,6 +31,9 @@ public class WordHolder extends RecyclerView.ViewHolder {
             public void onClick(View v) {
                 innerContainer.setBackgroundColor(data.getType().getColor());
                 data.setOpened(true);
+                if(!StartActivity.flag){
+                    word.setText("");
+                }
             }
         });
     }
@@ -40,10 +43,14 @@ public class WordHolder extends RecyclerView.ViewHolder {
         word.setText(data.getWord());
         if (data.isOpened()) {
             innerContainer.setBackgroundColor(data.getType().getColor());
+            if(!StartActivity.flag){
+                word.setText("");
+            }
         }else{
-            if(StartActivity.flag)
-            innerContainer.setBackgroundColor(data.getType().getColor());
-            innerContainer.getBackground().setAlpha(50);
+            if(StartActivity.flag) {
+                innerContainer.setBackgroundColor(data.getType().getColor());
+                innerContainer.getBackground().setAlpha(50);
+            }
         }
     }
 }
