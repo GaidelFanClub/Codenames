@@ -8,4 +8,6 @@
     <string name="start.dialog.ok">Начать</string>
     <string name="start.dialog.cancel">Отмена</string>
     <string name="start.dialog.empty_keyword_error">Ключевое слово не может быть пустым</string>
+    <string name="acm">ACM</string>
+    <string name="codenames">codenames</string>
 </resources>
