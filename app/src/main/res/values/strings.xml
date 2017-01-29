@@ -10,4 +10,6 @@
     <string name="start.dialog.empty_keyword_error">Ключевое слово не может быть пустым</string>
     <string name="acm">ACM</string>
     <string name="codenames">codenames</string>
+    <string name="share_message">%s</string>
+    <string name="share_title">Поделиться шикарной игрой</string>
 </resources>

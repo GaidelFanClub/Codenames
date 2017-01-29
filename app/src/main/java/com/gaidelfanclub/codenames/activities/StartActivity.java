@@ -4,6 +4,7 @@ package com.gaidelfanclub.codenames.activities;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -14,10 +15,6 @@ import com.gaidelfanclub.codenames.BaseActivity;
 import com.gaidelfanclub.codenames.R;
 
 public class StartActivity extends BaseActivity {
-
-    private interface OnKeywordEnteredListener {
-        void onKeywordEntered(String keyword);
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +51,31 @@ public class StartActivity extends BaseActivity {
                 });
             }
         });
+
+        findViewById(R.id.rate).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final String appPackageName = getPackageName();
+                try {
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + appPackageName)));
+                } catch (android.content.ActivityNotFoundException anfe) {
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + appPackageName)));
+                }
+            }
+        });
+
+        findViewById(R.id.share).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String url = "https://play.google.com/store/apps/details?id=" + getPackageName();
+                String shareMessage = getString(R.string.share_message, url);
+                Intent sendIntent = new Intent();
+                sendIntent.setAction(Intent.ACTION_SEND);
+                sendIntent.putExtra(Intent.EXTRA_TEXT, shareMessage);
+                sendIntent.setType("text/plain");
+                startActivity(Intent.createChooser(sendIntent, getResources().getText(R.string.share_title)));
+            }
+        });
     }
 
     private void startGame(String keyword, boolean asLeader) {
@@ -85,6 +107,10 @@ public class StartActivity extends BaseActivity {
         });
 
         builder.show();
+    }
+
+    private interface OnKeywordEnteredListener {
+        void onKeywordEntered(String keyword);
     }
 
 
