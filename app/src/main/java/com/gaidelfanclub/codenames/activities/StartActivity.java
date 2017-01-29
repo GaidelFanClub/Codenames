@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -90,8 +91,10 @@ public class StartActivity extends BaseActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(StartActivity.this);
         builder.setTitle(getString(titleId));
 
-        final EditText input = new EditText(StartActivity.this);
-        builder.setView(input);
+        LayoutInflater inflater = getLayoutInflater();
+        View view = inflater.inflate(R.layout.v_start_dialog, null);
+        builder.setView(view);
+        final EditText input = (EditText) view.findViewById(R.id.text_field);
 
         builder.setPositiveButton(R.string.start_dialog_ok, new DialogInterface.OnClickListener() {
             @Override
