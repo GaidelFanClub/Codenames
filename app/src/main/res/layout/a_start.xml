@@ -42,8 +42,8 @@
 
         <ImageButton
             android:id="@+id/rules"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/icon_size"
+            android:layout_height="@dimen/icon_size"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:background="?selectableItemBackground"
@@ -53,8 +53,8 @@
 
         <ImageButton
             android:id="@+id/rate"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/icon_size"
+            android:layout_height="@dimen/icon_size"
             android:layout_centerHorizontal="true"
             android:background="?selectableItemBackground"
             android:scaleType="fitCenter"
@@ -63,8 +63,8 @@
 
         <ImageButton
             android:id="@+id/share"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/icon_size"
+            android:layout_height="@dimen/icon_size"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:background="?selectableItemBackground"
