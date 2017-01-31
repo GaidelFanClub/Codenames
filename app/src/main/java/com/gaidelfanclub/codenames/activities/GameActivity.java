@@ -1,6 +1,8 @@
 package com.gaidelfanclub.codenames.activities;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Point;
 import android.os.Bundle;
@@ -56,6 +58,21 @@ public class GameActivity extends BaseActivity {
             words = (Word[]) savedInstanceState.getParcelableArray(TAG_WORDS);
         }
         initGrid();
+        if (isLeader) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(GameActivity.this);
+            builder.setTitle("Слово-идентификатор")
+                    .setMessage("Скажите это слово участникам: \n" + KeywordUtils.getParticipantKeyword(keyword))
+                    .setCancelable(false)
+                    .setNegativeButton("ОК",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    dialog.cancel();
+                                }
+                            });
+            AlertDialog alert = builder.create();
+            alert.show();
+        }
+
     }
 
     private void initGrid() {
