@@ -58,20 +58,24 @@ public class GameActivity extends BaseActivity {
             words = (Word[]) savedInstanceState.getParcelableArray(TAG_WORDS);
         }
         initGrid();
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(GameActivity.this);
         if (isLeader) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(GameActivity.this);
-            builder.setTitle("Слово-идентификатор")
-                    .setMessage("Скажите это слово участникам: \n" + KeywordUtils.getParticipantKeyword(keyword))
-                    .setCancelable(false)
-                    .setNegativeButton("ОК",
-                            new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int id) {
-                                    dialog.cancel();
-                                }
-                            });
-            AlertDialog alert = builder.create();
-            alert.show();
+            builder.setMessage("Скажите это слово участникам: \n" + KeywordUtils.getParticipantKeyword(keyword));
+        } else {
+            builder.setMessage("Первой ходит команда: " + (!firstTeam(words)? "КРАСНЫХ": "СИНИХ"));
         }
+        builder.setTitle("Слово-идентификатор")
+                .setCancelable(false)
+                .setNegativeButton("ОК",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+        AlertDialog alert = builder.create();
+        alert.show();
+
 
     }
 
@@ -145,6 +149,20 @@ public class GameActivity extends BaseActivity {
 
         }
         return KeywordUtils.convertParticipantKeywordToSeed(gameKey);
+    }
+
+    private boolean firstTeam(Word[] a) {
+        int blue = 0;
+        int red = 0;
+        for (int i = 0; i < a.length; i++) {
+            if (a[i].getType() == WordType.RED) {
+                red++;
+            }
+            if (a[i].getType() == WordType.BLUE){
+                blue++;
+            }
+        }
+        return (blue > red) ? true : false;
     }
 
 
