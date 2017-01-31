@@ -9,6 +9,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 import java.util.concurrent.CountDownLatch;
 import java.util.zip.ZipInputStream;
 
@@ -45,9 +46,7 @@ public class KeywordsStore {
     }
 
     public String getParticipantKeyword(String keyword) {
-        int index = findLowerPosition(keyword);
-        index = data.length - 1 - index;//inverse index
-        return data[index];
+        return data[new Random(keyword.hashCode()).nextInt(data.length)];
     }
 
     public String getWord(int index) { return data[index]; }
