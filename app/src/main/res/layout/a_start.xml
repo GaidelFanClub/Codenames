@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="bottom"
-                android:orientation="vertical">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="bottom"
+    android:orientation="vertical">
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="center"
         android:alpha="0.2"
-        android:src="@drawable/wordcloud"/>
+        android:scaleType="center"
+        android:src="@drawable/wordcloud" />
 
     <LinearLayout
         android:id="@+id/game_buttons"
@@ -36,7 +36,7 @@
                 android:background="?selectableItemBackground"
                 android:scaleType="fitCenter"
                 android:src="@drawable/ic_info"
-                android:tint="@color/blue"/>
+                android:tint="@color/blue" />
 
             <ImageButton
                 android:id="@+id/rate"
@@ -46,7 +46,7 @@
                 android:background="?selectableItemBackground"
                 android:scaleType="fitCenter"
                 android:src="@drawable/ic_star"
-                android:tint="@color/yellow"/>
+                android:tint="@color/yellow" />
 
             <ImageButton
                 android:id="@+id/share"
@@ -57,7 +57,7 @@
                 android:background="?selectableItemBackground"
                 android:scaleType="fitCenter"
                 android:src="@drawable/ic_share"
-                android:tint="@color/red"/>
+                android:tint="@color/red" />
         </RelativeLayout>
 
         <Button
@@ -65,14 +65,24 @@
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:text="@string/leader"
-            android:textColor="@color/primary_light"/>
+            android:textColor="@color/primary_light" />
 
         <Button
             android:id="@+id/participant"
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:text="@string/participant"
-            android:textColor="@color/primary_light"/>
+            android:textColor="@color/primary_light" />
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/version"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="3dp"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="12sp"
+        android:layout_centerHorizontal="true"/>
 
 </RelativeLayout>

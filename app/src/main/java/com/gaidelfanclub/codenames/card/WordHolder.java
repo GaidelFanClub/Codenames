@@ -40,7 +40,7 @@ public class WordHolder extends RecyclerView.ViewHolder {
         word.setText(data.getWord());
         if (isLeader) {
             innerContainer.setBackgroundColor(data.getType().getColor());
-            word.setTextColor(data.getType().getColor2());
+            word.setTextColor(data.getType().getTextColor());
             float c = flag ? 0.5f : 1f;
             innerContainer.setAlpha(c);
             flag = !flag;
@@ -48,6 +48,7 @@ public class WordHolder extends RecyclerView.ViewHolder {
         } else {
             if (data.isOpened()) {
                 innerContainer.setBackgroundColor(data.getType().getColor());
+                word.setTextColor(data.getType().getTextColor());
             } else {
                 innerContainer.setBackgroundColor(defaultColor);
             }

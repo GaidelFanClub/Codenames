@@ -10,10 +10,14 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.gaidelfanclub.codenames.BaseActivity;
+import com.gaidelfanclub.codenames.BuildConfig;
 import com.gaidelfanclub.codenames.R;
+
+import java.util.Locale;
 
 public class StartActivity extends BaseActivity {
 
@@ -77,6 +81,7 @@ public class StartActivity extends BaseActivity {
                 startActivity(Intent.createChooser(sendIntent, getResources().getText(R.string.share_title)));
             }
         });
+        ((TextView)findViewById(R.id.version)).setText(String.format(Locale.US, "v%s.%d", BuildConfig.VERSION_NAME, BuildConfig.VERSION_CODE));
     }
 
     private void startGame(String keyword, boolean asLeader) {

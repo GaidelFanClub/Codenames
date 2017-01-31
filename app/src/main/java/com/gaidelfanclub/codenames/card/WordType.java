@@ -13,5 +13,5 @@ public enum WordType {
     public int getColor() {
         return color;
     }
-    public int getColor2() { return colorOfText; }
+    public int getTextColor() { return colorOfText; }
 }
