@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.gaidelfanclub.codenames.Analytics;
 import com.gaidelfanclub.codenames.BaseActivity;
 import com.gaidelfanclub.codenames.BuildConfig;
 import com.gaidelfanclub.codenames.R;
@@ -127,5 +128,15 @@ public class StartActivity extends BaseActivity {
         void onKeywordEntered(String keyword);
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Analytics.getInstance().sendEvent("StartScreen onResume");
+    }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Analytics.getInstance().sendEvent("StartScreen onPause");
+    }
 }

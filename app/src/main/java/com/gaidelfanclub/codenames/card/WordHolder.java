@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
+import com.gaidelfanclub.codenames.Analytics;
 import com.gaidelfanclub.codenames.R;
 
 public class WordHolder extends RecyclerView.ViewHolder {
@@ -14,12 +15,10 @@ public class WordHolder extends RecyclerView.ViewHolder {
 
     private Word data;
     private boolean isLeader;
-    private boolean flag;
 
     public WordHolder(final View itemView, final boolean isLeader) {
         super(itemView);
         this.isLeader = isLeader;
-        flag = true;
 
         word = (TextView) itemView.findViewById(R.id.word);
         innerContainer = itemView.findViewById(R.id.inner_container);
@@ -29,7 +28,8 @@ public class WordHolder extends RecyclerView.ViewHolder {
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                data.setOpened(true);
+                Analytics.getInstance().sendEvent("Word Click");
+                data.setOpened(isLeader ? !data.isOpened() : true);
                 bind(data);
             }
         });
@@ -41,10 +41,8 @@ public class WordHolder extends RecyclerView.ViewHolder {
         if (isLeader) {
             innerContainer.setBackgroundColor(data.getType().getColor());
             word.setTextColor(data.getType().getTextColor());
-            float c = flag ? 0.5f : 1f;
+            float c = data.isOpened() ? 0.5f : 1f;
             innerContainer.setAlpha(c);
-            flag = !flag;
-
         } else {
             if (data.isOpened()) {
                 innerContainer.setBackgroundColor(data.getType().getColor());

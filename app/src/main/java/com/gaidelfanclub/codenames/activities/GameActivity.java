@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.GridLayout;
 
+import com.gaidelfanclub.codenames.Analytics;
 import com.gaidelfanclub.codenames.BaseActivity;
 import com.gaidelfanclub.codenames.R;
 import com.gaidelfanclub.codenames.card.Word;
@@ -163,5 +164,16 @@ public class GameActivity extends BaseActivity {
         return (blue > red) ? true : false;
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Analytics.getInstance().sendEvent("GameActivity onResume");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Analytics.getInstance().sendEvent("GameActivity onPause");
+    }
 
 }
