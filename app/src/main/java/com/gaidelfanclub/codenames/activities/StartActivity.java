@@ -69,6 +69,12 @@ public class StartActivity extends BaseActivity {
             }
         });
 
+        findViewById(R.id.rules).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://tesera.ru/images/items/775882/Codenames%20GaGa%20Games.pdf")));
+            }
+        });
         findViewById(R.id.share).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

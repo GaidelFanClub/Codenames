@@ -63,9 +63,9 @@ public class GameActivity extends BaseActivity {
         if (isLeader) {
             builder.setMessage("Скажите это слово участникам: \n" + KeywordUtils.getParticipantKeyword(keyword));
         } else {
-            builder.setMessage("Первой ходит команда: " + (!firstTeam(words)? "КРАСНЫХ": "СИНИХ"));
+            builder.setMessage("Первой ходит команда: " + (!firstTeam(words)? "КРАСНЫЕ": "СИНИЕ"));
         }
-        builder.setTitle("Слово-идентификатор")
+        builder.setTitle(isLeader ? "Слово-идентификатор" : "Первый ход")
                 .setCancelable(false)
                 .setNegativeButton("ОК",
                         new DialogInterface.OnClickListener() {
@@ -75,8 +75,6 @@ public class GameActivity extends BaseActivity {
                         });
         AlertDialog alert = builder.create();
         alert.show();
-
-
     }
 
     private void initGrid() {
