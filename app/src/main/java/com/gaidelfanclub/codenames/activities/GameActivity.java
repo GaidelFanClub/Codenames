@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Point;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.Display;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -56,7 +57,11 @@ public class GameActivity extends BaseActivity {
         if (savedInstanceState == null) {
             words = createWords();
         } else {
-            words = (Word[]) savedInstanceState.getParcelableArray(TAG_WORDS);
+            Parcelable[] parcelables = savedInstanceState.getParcelableArray(TAG_WORDS);
+            words = new Word[parcelables.length];
+            for (int i = 0; i < parcelables.length; i++) {
+                words[i] = (Word) parcelables[i];
+            }
         }
         initGrid();
 
@@ -64,7 +69,7 @@ public class GameActivity extends BaseActivity {
         if (isLeader) {
             builder.setMessage("Скажите это слово участникам: \n" + KeywordUtils.getParticipantKeyword(keyword));
         } else {
-            builder.setMessage("Первой ходит команда: " + (!firstTeam(words)? "КРАСНЫЕ": "СИНИЕ"));
+            builder.setMessage("Первой ходит команда: " + (!firstTeam(words) ? "КРАСНЫЕ" : "СИНИЕ"));
         }
         builder.setTitle(isLeader ? "Слово-идентификатор" : "Первый ход")
                 .setCancelable(false)
@@ -157,7 +162,7 @@ public class GameActivity extends BaseActivity {
             if (a[i].getType() == WordType.RED) {
                 red++;
             }
-            if (a[i].getType() == WordType.BLUE){
+            if (a[i].getType() == WordType.BLUE) {
                 blue++;
             }
         }

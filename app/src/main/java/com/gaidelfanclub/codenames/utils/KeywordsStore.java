@@ -42,14 +42,19 @@ public class KeywordsStore {
     }
 
     public int getSeedByPublicKey(String keyword) {
+        awaitInit();
         return Arrays.binarySearch(data, keyword);
     }
 
     public String getParticipantKeyword(String keyword) {
+        awaitInit();
         return data[new Random(keyword.hashCode()).nextInt(data.length)];
     }
 
-    public String getWord(int index) { return data[index]; }
+    public String getWord(int index) {
+        awaitInit();
+        return data[index];
+    }
 
     public int findLowerPosition(String keyword) {
         awaitInit();
